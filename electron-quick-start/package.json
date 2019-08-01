@@ -1,0 +1,72 @@
+{
+    "name": "electron-quick-start",
+    "version": "1.0.0",
+    "description": "这是一个electron测试应用，自定义更新服务器",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "postinstall": "electron-builder install-app-deps",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "build": {
+        "appId": "com.test.electron",
+        "productName": "Test electron",
+        "artifactName": "TestElectron-${arch}.${ext}",
+        "win": {
+            "target": [
+                "nsis"
+            ],
+            "icon": "build/icons/icon_256x256.png"
+        },
+        "linux": {
+            "target": [
+                "deb",
+                "AppImage"
+            ],
+            "category": "Graphics",
+            "executableName": "FreeTexturePacker",
+            "icon": "build/icons/icons.icns"
+        },
+        "mac": {
+            "category": "public.app-category.graphics-design",
+            "target": "dmg",
+            "icon": "build/icons/icons.icns"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "directories": {
+            "output": "dist/app"
+        },
+        "fileAssociations": {
+            "ext": "ftpp",
+            "name": "Free texture packer project"
+        },
+        "publish": [
+            {
+                "provider": "generic",
+                "url": "http://127.0.0.1:7001/public/app"
+            }
+        ]
+    },
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+        "Electron",
+        "quick",
+        "start",
+        "tutorial",
+        "demo"
+    ],
+    "author": "GitHub",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "^5.0.8",
+        "electron-builder": "^21.1.5"
+    },
+    "dependencies": {
+        "electron-log": "^3.0.6",
+        "electron-updater": "^4.1.2"
+    }
+}
